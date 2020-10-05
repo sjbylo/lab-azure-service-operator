@@ -59,8 +59,8 @@ oc create -f deploy-azure-mysql
 Wait for all resources to be provisioned and extract the password:
 
 ```
-#eval `bin/ksec aro-demo-mysqluser`   
-eval `oc get secret aro-demo-mysqluser -o go-template='{{range $k,$v := .data}}{{printf "%s='\''" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"'\''\n"}}{{end}}'`
+#eval `bin/ksec my-demo-mysqluser`   
+eval `oc get secret my-demo-mysqluser -o go-template='{{range $k,$v := .data}}{{printf "%s='\''" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"'\''\n"}}{{end}}'`
 ```
 Note: My useful ksec script is also in this repo under the bin dir.
 

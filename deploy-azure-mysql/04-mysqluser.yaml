@@ -1,9 +1,9 @@
 apiVersion: azure.microsoft.com/v1alpha1
 kind: MySQLUser
 metadata:
-  name: aro-demo-mysqluser
+  name: my-demo-mysqluser
 spec:
-  server: my-demo-mysql-server
+  server: my-demo-mysqlserver
   dbName: mydb
   resourceGroup: aro-demo
   # Specify a specific username for the user

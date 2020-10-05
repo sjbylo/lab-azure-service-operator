@@ -4,4 +4,4 @@ metadata:
   name: mydb
 spec:
   resourceGroup: aro-demo
-  server: my-demo-mysql-server
+  server: my-demo-mysqlserver

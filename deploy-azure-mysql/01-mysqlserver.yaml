@@ -1,7 +1,7 @@
 apiVersion: azure.microsoft.com/v1alpha2
 kind: MySQLServer
 metadata:
-  name: my-demo-mysql-server
+  name: my-demo-mysqlserver
   labels:
     test: aro-demo
 spec:
