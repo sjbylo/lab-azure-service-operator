@@ -71,7 +71,7 @@ mysql -h$fullyQualifiedServerName -u$username@$MySqlServerName -p$password -D$My
 ```
 Install the mysql CLI first!
 
-Note, the username is made up of "<username>@<MySqlServerName>"
+Note, the username is made up of `<username>@<MySqlServerName>`
 
 # Clean up
 
