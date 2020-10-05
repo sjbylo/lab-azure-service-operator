@@ -29,7 +29,7 @@ oc create secret generic azureoperatorsettings --from-env-file=data -n openshift
 Install ASO, as of writing - 0.37.0, with all the defaults using OCP Console.
 
 
-# Workaround.  
+# Workaround
 
 Change the permissions for the azure-service-operator service account - run this once after ASO is installed: 
 
@@ -37,7 +37,7 @@ Change the permissions for the azure-service-operator service account - run this
 oc adm policy add-cluster-role-to-user cluster-admin -z azure-service-operator -n openshift-operators --rolebinding-name=azure-service-operator-workaround
 ```
 Note: This was needed for v0.37.0 (as of end Sep 2020) and may not be needed in future versions of ASO. 
-See this issue if you need to understand more: https://github.com/Azure/azure-service-operator/issues/1269 
+See this issue I created if you need to understand more: https://github.com/Azure/azure-service-operator/issues/1269 
 
 # Create a new project
 
@@ -48,6 +48,13 @@ oc new-project test-aso
 # Create the Azure MySQL Server and all needed configurations
 
 First, check the manifests in the deploy-azure-mysql dir.  For example, check the region you want to deploy mysql in e.g. "location: australiaeast".
+
+The example manifest files will create the following resources:
+
+1. my-demo-mysqlserver - a MySQL: server in location: australiaeast.  Check the SKU values also.
+1. my-demo-mysqlfirewallrule-public - Allow public access to the DB.
+1. mydb - Create a database in MySQL called "mydb"
+1. my-demo-mysqluser - Create a user called "user" with access to the database "mydb" 
 
 Instantiate the manifests:
 ```
@@ -77,6 +84,7 @@ Note, the username is made up of `<username>@<MySqlServerName>`
 
 ```
 oc delete -f deploy-azure-mysql
+oc delete project test-aso 
 ```
 
 
