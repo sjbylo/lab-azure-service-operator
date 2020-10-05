@@ -1,4 +1,4 @@
-# Quick Azure Operator Demo with Azure MySQL
+# Quick Azure Operator demo with Azure MySQL using ARO 4.4
 
 # Prepare to create the secret, create the file "data"
 
@@ -59,7 +59,7 @@ oc create -f deploy-azure-mysql
 Wait for all resources to be provisioned and extract the password:
 
 ```
-#eval `ksec aro-demo-mysqluser`   
+#eval `bin/ksec aro-demo-mysqluser`   
 eval `oc get secret aro-demo-mysqluser -o go-template='{{range $k,$v := .data}}{{printf "%s='\''" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"'\''\n"}}{{end}}'`
 ```
 Note: My useful ksec script is also in this repo under the bin dir.
