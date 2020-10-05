@@ -56,7 +56,7 @@ oc create -f deploy-azure-mysql
 
 # Extract the MySQL user's secret information
 
-Wait for all resources to be provisioned and ectract the password:
+Wait for all resources to be provisioned and extract the password:
 
 ```
 #eval `ksec aro-demo-mysqluser`   
