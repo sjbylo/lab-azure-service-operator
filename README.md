@@ -54,9 +54,9 @@ Instantiate the manifests:
 oc create -f deploy-azure-mysql
 ```
 
-# Access the database
+# Extract the MySQL user's secret information
 
-Wait for all resources provisioned and access the DB with.  
+Wait for all resources to be provisioned and ectract the password:
 
 ```
 #eval `ksec aro-demo-mysqluser`   
@@ -64,13 +64,14 @@ eval `oc get secret aro-demo-mysqluser -o go-template='{{range $k,$v := .data}}{
 ```
 Note: My useful ksec script is also in this repo under the bin dir.
 
-# Log into the DB (install the mysql CLI first!)
-
-Note, the username is made up of "$username@$MySqlServerName"
+# Log into the DB 
 
 ```
 mysql -h$fullyQualifiedServerName -u$username@$MySqlServerName -p$password -D$MySqlDatabaseName
 ```
+Install the mysql CLI first!
+
+Note, the username is made up of "<username>@<MySqlServerName>"
 
 # Clean up
 
