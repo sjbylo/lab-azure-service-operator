@@ -6,7 +6,7 @@ Follow the Azure Service Operator's instructions.
 
 This is one way to create the needed secret from the Service Principle credentials:
 
-Create a file with the following data:
+Create a file with the following data. Ensure you replace the values with the proper Azure relatd values:
 
 ```
 AZURE_TENANT_ID=XXXXXXXX-YYYY-ZZZZ-1111-222222222222
