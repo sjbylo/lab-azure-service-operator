@@ -51,10 +51,10 @@ First, check the manifests in the deploy-azure-mysql dir.  For example, check th
 
 The example manifest files will create the following resources:
 
-1. my-demo-mysqlserver - a MySQL: server in location: australiaeast.  Check the SKU values also.
+1. my-demo-mysqlserver - Create a MySQL server in location: "australiaeast".  
 1. my-demo-mysqlfirewallrule-public - Allow public access to the DB.
-1. mydb - Create a database in MySQL called "mydb"
-1. my-demo-mysqluser - Create a user called "user" with access to the database "mydb" 
+1. mydb - Create a database in the MySQL server called "mydb".
+1. my-demo-mysqluser - Create a user called "user" with access to the database "mydb".
 
 Instantiate the manifests:
 ```
@@ -63,13 +63,13 @@ oc create -f deploy-azure-mysql
 
 # Extract the MySQL user's secret information
 
-Wait for all resources to be provisioned and extract the password:
+Wait for all resources to be provisioned and extract the DB access credentials:
 
 ```
 #eval `bin/ksec my-demo-mysqluser`   
 eval `oc get secret my-demo-mysqluser -o go-template='{{range $k,$v := .data}}{{printf "%s='\''" $k}}{{if not $v}}{{$v}}{{else}}{{$v | base64decode}}{{end}}{{"'\''\n"}}{{end}}'`
 ```
-Note: My useful ksec script is also in this repo under the bin dir.
+Note: My useful `ksec` script can also be used which is in this repo under the bin dir.
 
 # Log into the DB 
 
